@@ -1,0 +1,119 @@
+<!-- ======== START OF HEADER SECTION ========= -->
+{% include "includes/header.html" %}
+<!-- ======== END OF HEADER SECTION =========== -->
+{% load static %}
+{% block content %}
+
+    <!-- ======== START OF HEADER SECTION ========= -->
+    {% include "includes/menubar.html" %}
+    <!-- ======== END OF HEADER SECTION =========== -->
+
+    <!-- ======== START OF HEADER SECTION ========= -->
+    {% include "includes/aside.html" %}
+    <!-- ======== END OF HEADER SECTION =========== -->
+
+    <div class="content-wrapper">
+        <div class="col-md-12">&nbsp;</div>
+        <section class="content">
+            <div class="container-fluid">
+                <div class="col-md-9">
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">View Social Work</h3>
+                        </div>
+
+                        <form class="form-horizontal" method="POST" action="" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Social Element</label>
+                                    <div class="col-sm-8" id="newText1">
+                                        {{ socialWorkData.social_element.title }}
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Field Area</label>
+                                    <div class="col-sm-8" id="newText3">
+                                        {{ socialWorkData.field_area }}
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Description</label>
+                                    <div class="col-sm-8" id="newText2">
+                                        {{ socialWorkData.description | striptags }}
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Remark</label>
+                                    <div class="col-sm-8" id="newText3">
+                                        {{ socialWorkData.remark | striptags }}
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Budget (TK)</label>
+                                    <div class="col-sm-8" id="newText3">
+                                        {{ socialWorkData.budget }}
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Supervisor</label>
+                                    <div class="col-sm-8" id="newText3">
+                                        {{ socialWorkData.supervisor }}
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Contact</label>
+                                    <div class="col-sm-8" id="newText3">
+                                        {{ socialWorkData.contact_no }}
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Volunteer(s)</label>
+                                    <div class="col-sm-8" id="newText3">
+                                        {% for i in volunteerData %}
+                                        {% with allVolunteer=socialWorkData.volunteer_id.all %}
+                                        {% if i in allVolunteer %}
+                                        <h5> - {{ i.name }}</h5>
+                                        {% endif %}
+                                        {% endwith %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Status</label>
+                                    <div class="col-sm-8">
+                                        {{ socialWorkData.status | title }}
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        makeHTML('newText1');
+        makeHTML('newText2');
+        makeHTML('newText3');
+    </script>
+
+    <!-- Control sidebar content goes here -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- /.control-sidebar -->
+    </aside>
+
+{% endblock content %}
+
+<!-- ===== START OF FOOTER SECTION ======== -->
+{% include "includes/footer.html" %}
+<!-- ===== END OF FOOTER SECTION ==========

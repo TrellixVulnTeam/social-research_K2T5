@@ -1,0 +1,94 @@
+<!-- ======== START OF HEADER SECTION ========= -->
+{% include "includes/header.html" %}
+<!-- ======== END OF HEADER SECTION =========== -->
+{% load static %}
+{% block content %}
+
+    <!-- ======== START OF HEADER SECTION ========= -->
+    {% include "includes/menubar.html" %}
+    <!-- ======== END OF HEADER SECTION =========== -->
+
+    <!-- ======== START OF HEADER SECTION ========= -->
+    {% include "includes/aside.html" %}
+    <!-- ======== END OF HEADER SECTION =========== -->
+
+    <div class="content-wrapper">
+        <div class="col-md-12">&nbsp;</div>
+        <section class="content">
+            <div class="container-fluid">
+                <div class="col-md-9">
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">View Volunteer Info</h3>
+                        </div>
+
+                        <form class="form-horizontal" method="POST" action="" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Name</label>
+                                    <div class="col-sm-8">
+                                        {{ volunteerData.name }}
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Designation</label>
+                                    <div class="col-sm-8" id="newText1">
+                                        {{ volunteerData.designation }}
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Contact</label>
+                                    <div class="col-sm-8" id="newText2">
+                                        {{ volunteerData.contact }}
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Email</label>
+                                    <div class="col-sm-8" id="newText3">
+                                        {{ volunteerData.email }}
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Description</label>
+                                    <div class="col-sm-8" id="newText4">
+                                        {{ volunteerData.description | striptags }}
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Status</label>
+                                    <div class="col-sm-8">
+                                        {{ volunteerData.status | title }}
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        makeHTML('newText1');
+        makeHTML('newText2');
+        makeHTML('newText3');
+        makeHTML('newText4');
+        makeHTML('newText5');
+    </script>
+
+    <!-- Control sidebar content goes here -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- /.control-sidebar -->
+    </aside>
+
+{% endblock content %}
+
+<!-- ===== START OF FOOTER SECTION ======== -->
+{% include "includes/footer.html" %}
+<!-- ===== END OF FOOTER SECTION ==========

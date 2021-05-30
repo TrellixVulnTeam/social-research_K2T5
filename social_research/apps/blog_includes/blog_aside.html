@@ -1,0 +1,67 @@
+{% load static %}
+<!-- start course archive sidebar -->
+<div class="col-lg-4 col-md-4 col-sm-4">
+    <div class="courseArchive_sidebar">
+        <!-- start single sidebar -->
+        <div class="single_sidebar">
+            <h2>Recent Post <span class="fa fa-angle-double-right"></span></h2>
+            <ul class="news_tab">
+                {% for i in blogData %}
+                {% if i.id <= 5 %}
+                <li>
+                    <div class="media">
+                        <div class="media-left">
+                            <a target="_blank" 
+                                {% if menuData != '' %}
+                                href="{% url 'front_blog_detail' i.id %}"
+                                {% else %}
+                                onclick="alert('You need to log in first !')" 
+                                href="{% url 'web_sign_in' %}" 
+                                {% endif %} 
+                                class="news_img">
+                                <img alt="img" src="{{ MEDIA_URL }}blog_file/{{ i.blog_file }}" class="media-object">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <a target="_blank" 
+                                {% if menuData != '' %}
+                                onclick="alert('You need to log in first !')"
+                                href="{% url 'front_blog_detail' i.id %}"
+                                {% else %}
+                                href="{% url 'web_sign_in' %}" 
+                                {% endif %}>
+                                {{ i.blog_title|striptags }}</a>
+                            <span class="feed_date">{{ i.date }}</span>
+                        </div>
+                    </div>
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        <!-- End single sidebar -->
+
+        <!-- start single sidebar -->
+        <div class="single_sidebar">
+            <h2>Social Elements <span class="fa fa-angle-double-right"></span></h2>
+            <ul>
+                {% for i in socialElementData %}
+                <li><a href="#">{{ i.title | title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <!-- End single sidebar -->
+
+        <!-- start single sidebar -->
+        <div class="single_sidebar">
+            <h2>Tags <span class="fa fa-angle-double-right"></span></h2>
+            <ul class="tags_nav">
+                {% for i in socialElementData %}
+                <li><a target="_blank" onclick="window.location.replace(`https://www.google.com/search?q={{ i.title }}`);" ><i class="fa fa-tags"></i>{{ i.title }}</a></li><br>
+                {% endfor %}
+            </ul>
+        </div>
+        <!-- End single sidebar -->
+    </div>
+</div>
+<!-- start course archive sidebar -->

@@ -1,0 +1,67 @@
+<!-- ======== START OF HEADER SECTION ========= -->
+{% include "includes/header.html" %}
+<!-- ======== END OF HEADER SECTION =========== -->
+{% load static %}
+{% block content %}
+
+    <!-- ======== START OF HEADER SECTION ========= -->
+    {% include "includes/menubar.html" %}
+    <!-- ======== END OF HEADER SECTION =========== -->
+
+    <!-- ======== START OF HEADER SECTION ========= -->
+    {% include "includes/aside.html" %}
+    <!-- ======== END OF HEADER SECTION =========== -->
+
+    <div class="content-wrapper">
+        <div class="col-md-12">&nbsp;</div>
+        <section class="content">
+            <div class="container-fluid">
+                <div class="col-md-9">
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">Editt Social Element</h3>
+                        </div>
+
+                        <form class="form-horizontal" method="POST" action="" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Social Element</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="title" value="{{ socialElementData.title }}" class="form-control" placeholder="Title as social element ...">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Status</label>
+                                    <div class="col-sm-8">
+                                        <select name="status" class="form-control select2" style="width: 100%;">
+                                            <option value="" disabled>Select</option>
+                                            <option {% if socialElementData.status == 'active' %} selected {% endif %} value="active">Active</option>
+                                            <option {% if socialElementData.status == 'inactive' %} selected {% endif %} value="inactiva">Inactive</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-footer">
+                                <input type="submit" name="social_element_edit" value="Update" class="btn btn-info">
+                                <button type="reset" class="btn btn-default float-right">Discard</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Control sidebar content goes here -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- /.control-sidebar -->
+    </aside>
+
+{% endblock content %}
+
+<!-- ===== START OF FOOTER SECTION ======== -->
+{% include "includes/footer.html" %}
+<!-- ===== END OF FOOTER SECTION ==========

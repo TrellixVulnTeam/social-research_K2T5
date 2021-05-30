@@ -1,0 +1,60 @@
+<!-- ======== START OF HEADER SECTION ========= -->
+{% include "blog_includes/blog_header.html" %}
+<!-- ======== END OF HEADER SECTION =========== -->
+
+{% block content %}
+{% load static %}
+
+    <!-- ======== START OF HEADER SECTION ========= -->
+    {% include "blog_includes/blog_menubar.html" %}
+    <!-- ======== END OF HEADER SECTION =========== -->
+
+    <!--=========== BEGIN COURSE BANNER SECTION ================-->
+    <section id="courseArchive">
+        <div class="container">
+            <div class="row">
+                <!-- start course content -->
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    <div class="courseArchive_content">
+                        <!-- start blog archive  -->
+                        <div class="row">
+                            <!-- start single blog -->
+                            <div class="col-lg-12 col-12 col-sm-12">
+                                <div class="single_blog">
+                                    <div class="blogimg_container">
+                                        <a href="#" class="blog_img">
+                                        <img alt="img" src="{{ MEDIA_URL }}blog_file/{{ singleBlogData.blog_file }}">
+                                        </a>
+                                    </div>
+
+                                    <h2 class="blog_title"><a href="#"> {{ singleBlogData.blog_title|striptags | title }}</a></h2>
+
+                                    <div class="blog_commentbox">
+                                        <p><i class="fa fa-user"></i>Based on social research</p>
+                                        <p><i class="fa fa-calendar"></i>{{ singleBlogData.date }}</p>
+                                        <!-- <a href="#"><i class="fa fa-comments"></i>20 Comments</a> -->
+                                    </div>
+
+                                    <p>{{ singleBlogData.blog_txt|striptags }}</p>
+                                </div>
+                            </div>
+                            <!-- End single blog -->                
+                        </div>
+                        <!-- end blog archive  -->
+                    </div>
+                </div>
+                <!-- End course content -->
+
+                <!-- ======== START OF HEADER SECTION ========= -->
+                {% include "blog_includes/blog_aside.html" %}
+                <!-- ======== END OF HEADER SECTION =========== -->
+
+            </div>
+        </div>
+    </section>
+    <!--=========== END COURSE BANNER SECTION ================-->
+
+<!-- ===== START OF FOOTER SECTION ======== -->
+{% include "blog_includes/blog_footer.html" %}
+<!-- ===== END OF FOOTER SECTION ========== -->
+{% endblock content %}

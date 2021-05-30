@@ -1,0 +1,132 @@
+<!-- ======== START OF HEADER SECTION ========= -->
+{% include "includes/header.html" %}
+<!-- ======== END OF HEADER SECTION =========== -->
+{% load static %}
+{% block content %}
+
+    <!-- ======== START OF HEADER SECTION ========= -->
+    {% include "includes/menubar.html" %}
+    <!-- ======== END OF HEADER SECTION =========== -->
+
+    <!-- ======== START OF HEADER SECTION ========= -->
+    {% include "includes/aside.html" %}
+    <!-- ======== END OF HEADER SECTION =========== -->
+
+    <div class="content-wrapper">
+        <div class="col-md-12">&nbsp;</div>
+        <section class="content">
+            <div class="container-fluid">
+                <div class="col-md-9">
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">Add New Elemental Fact</h3>
+                        </div>
+
+                        <form class="form-horizontal" method="POST" action="" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Social Element</label>
+                                    <div class="col-sm-8">
+                                        <select name="social_element" class="form-control select2" style="width: 100%;">
+                                            <option value="" selected disabled>Select</option>
+                                            {% for i in socialElementData %}
+                                            <option value="{{ i.id }}">{{ i.title | title }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Description</label>
+                                    <div class="col-sm-8">
+                                        <textarea name="description" class="textarea" 
+                                        placeholder="Place some text here ..." 
+                                        style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
+                                        </textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Good Effect</label>
+                                    <div class="col-sm-8">
+                                        <textarea name="good_effect" class="textarea" 
+                                        placeholder="Place some text here ..." 
+                                        style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
+                                        </textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Bad Effect</label>
+                                    <div class="col-sm-8">
+                                        <textarea name="bad_effect" class="textarea" 
+                                        placeholder="Place some text here ..." 
+                                        style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
+                                        </textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Conclusion</label>
+                                    <div class="col-sm-8">
+                                        <textarea name="conclusion" class="textarea" 
+                                        placeholder="Place some text here ..." 
+                                        style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
+                                        </textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Remark</label>
+                                    <div class="col-sm-8">
+                                        <select name="remark" class="form-control select2" style="width: 100%;">
+                                            <option value="" selected disabled>Select</option>
+                                            <option value="positive">Positive</option>
+                                            <option value="progressive">Progressive</option>
+                                            <option value="negative">Negative</option>
+                                            <option value="not_sure">Not Sure</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Correlational with</label>
+                                    <div class="col-sm-8">
+                                        <select name="correlation" class="form-control select2" style="width: 100%;">
+                                            <option value="" selected disabled>Select</option>
+                                            {% for i in socialElementData %}
+                                            <option value="{{ i.id }}">{{ i.title | title }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-footer">
+                                <input type="submit" name="elemental_fact_add" value="Save" class="btn btn-info">
+                                <button type="reset" class="btn btn-default float-right">Discard</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Control sidebar content goes here -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- /.control-sidebar -->
+    </aside>
+
+{% endblock content %}
+
+<!-- ===== START OF FOOTER SECTION ======== -->
+{% include "includes/footer.html" %}
+<!-- ===== END OF FOOTER SECTION ========== -->
+
+<script>
+$(function () {
+    $('.textarea').summernote()
+})
+</script>

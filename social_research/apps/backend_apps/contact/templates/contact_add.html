@@ -1,0 +1,74 @@
+<!-- ======== START OF HEADER SECTION ========= -->
+{% include "blog_includes/blog_header.html" %}
+<!-- ======== END OF HEADER SECTION =========== -->
+
+{% block content %}
+{% load static %}
+
+    <!-- ======== START OF HEADER SECTION ========= -->
+    {% include "blog_includes/blog_menubar.html" %}
+    <!-- ======== END OF HEADER SECTION =========== -->
+    
+    <!--=========== BEGIN CONTACT SECTION ================-->
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="title_area">
+                        <h2 class="title_two">We are Social Research Committee</h2>
+                        <span></span> 
+                        <p>We analyze people interaction with both subjective and objective elements of society now this days basically how people want to engage them in today’s era and where. </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    <div class="contact_form wow fadeInLeft">
+                        <form class="submitphoto_form" method="POST" action="" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input name="name" type="text" class="wp-form-control wpcf7-text" placeholder="Your name">
+                            <input name="contact" type="text" class="wp-form-control wpcf7-text" placeholder="Contact NO.">          
+                            <input name="email" type="email" class="wp-form-control wpcf7-email" placeholder="Email address">          
+                            <input name="subject" type="text" class="wp-form-control wpcf7-text" placeholder="Subject">
+                            <textarea name="description" class="wp-form-control wpcf7-textarea" cols="30" rows="10" style="height: 100px;" placeholder="What would you like to tell us"></textarea>
+                            <input type="submit" name="contact_add" value="Submit" class="wpcf7-submit">
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="contact_address wow fadeInRight">
+                        <h3>Address</h3>
+                        <div class="address_group">
+                            <p>National University, Bangladesh</p>
+                            <p>Dhaka - Mymensingh Hwy, Gazipur 1704</p>
+                            <p>Phone: 02-9291018</p>
+                        </div>
+
+                        <div class="address_group">
+                            <ul class="footer_social">
+                                <li><a href="#" class="soc_tooltip" title="" data-placement="top" data-toggle="tooltip" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#" class="soc_tooltip" title="" data-placement="top" data-toggle="tooltip" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#" class="soc_tooltip" title="" data-placement="top" data-toggle="tooltip" data-original-title="Google+"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="#" class="soc_tooltip" title="" data-placement="top" data-toggle="tooltip" data-original-title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#" class="soc_tooltip" title="" data-placement="top" data-toggle="tooltip" data-original-title="Youtube"><i class="fa fa-youtube"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=========== END CONTACT SECTION ================-->
+
+    <!--=========== BEGIN GOOGLE MAP SECTION ================-->
+    <section id="googleMap">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3646.283695262137!2d90.37794331498515!3d23.95040628449119!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c4ac7e91b29f%3A0xe707d27208e45689!2sNational%20University%2C%20Bangladesh!5e0!3m2!1sen!2sbd!4v1580569503328!5m2!1sen!2sbd" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+    </section>
+    <!--=========== END GOOGLE MAP SECTION ================-->
+    
+<!-- ===== START OF FOOTER SECTION ======== -->
+{% include "blog_includes/blog_footer.html" %}
+<!-- ===== END OF FOOTER SECTION ========== -->
+{% endblock content %}

@@ -1,0 +1,85 @@
+<!-- ======== START OF HEADER SECTION ========= -->
+{% include "includes/header.html" %}
+<!-- ======== END OF HEADER SECTION =========== -->
+{% load static %}
+{% block content %}
+
+    <!-- ======== START OF HEADER SECTION ========= -->
+    {% include "includes/menubar.html" %}
+    <!-- ======== END OF HEADER SECTION =========== -->
+
+    <!-- ======== START OF HEADER SECTION ========= -->
+    {% include "includes/aside.html" %}
+    <!-- ======== END OF HEADER SECTION =========== -->
+
+    <div class="content-wrapper">
+        <div class="col-md-12">&nbsp;</div>
+        <section class="content">
+            <div class="container-fluid">
+                <div class="col-md-12">
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">All Social Elements</h3>
+                        </div>
+
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th width="40">SL</th>
+                                        <th>Social Element</th>
+                                        <th>Status</th>
+                                        <th width="40">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in socialElementData %}
+                                    <tr>
+                                        <td>{{ i.id }}</td>
+                                        <td>{{ i.title }}</td>
+                                        <td>{{ i.status | title }}</td>
+                                        <td class="text-left py-0 align-middle">
+                                            <div class="btn-group btn-group-sm">
+                                                <a href="{% url 'edit_social_element' i.id %}" 
+                                                class="btn btn-warning"><i class="fas fa-edit"></i></a>
+
+                                                <a href="{% url 'delete_social_element' i.id %}" 
+                                                onclick="return confirm('Are you sure to delete this data ?');" 
+                                                class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Control sidebar content goes here -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- /.control-sidebar -->
+    </aside>
+
+{% endblock content %}
+
+<!-- ===== START OF FOOTER SECTION ======== -->
+{% include "includes/footer.html" %}
+<!-- ===== END OF FOOTER SECTION ========== -->
+
+<script>
+    $(function () {
+        $("#example1").DataTable();
+        $('#example2').DataTable({
+            "paging"       : true,
+            "lengthChange" : false,
+            "searching"    : false,
+            "ordering"     : true,
+            "info"         : true,
+            "autoWidth"    : false,
+        });
+    });
+</script>

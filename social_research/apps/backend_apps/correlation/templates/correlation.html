@@ -1,0 +1,196 @@
+<!-- ======== START OF HEADER SECTION ========= -->
+{% include "includes/header.html" %}
+<!-- ======== END OF HEADER SECTION =========== -->
+
+<style type="text/css">
+#cssmenu,
+#cssmenu ul,
+#cssmenu ul li,
+#cssmenu ul li a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+  line-height: 1;
+  display: block;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#cssmenu {
+  width: 100%;
+  z-index: 10;
+}
+#cssmenu ul {
+  position: relative;
+  margin: 15px 40px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  background: #ffffff;
+  background: -moz-linear-gradient(bottom, #f0f0f0, #ffffff);
+  background: -webkit-linear-gradient(bottom, #f0f0f0, #ffffff);
+  background: -o-linear-gradient(bottom, #f0f0f0, #ffffff);
+  background: -ms-linear-gradient(bottom, #f0f0f0, #ffffff);
+  background: linear-gradient(to top, #f0f0f0, #ffffff);
+  float: left;
+}
+#cssmenu ul li {
+  display: block;
+  border-bottom: 1px solid #cccccc;
+}
+#cssmenu ul li.active {
+  border-bottom: 0;
+}
+#cssmenu ul li:last-child {
+  border-bottom: 0;
+}
+#cssmenu ul li a {
+  display: block;
+  padding: 14px 12px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #444444;
+}
+#cssmenu ul li.active {
+  left: -8px;
+  width: 102%;
+  padding: 2px;
+  background: #ce4c4a;
+  background: -moz-linear-gradient(bottom, rgb(76, 101, 150), #17A2B8);
+  background: -webkit-linear-gradient(bottom, rgb(76, 101, 150), #17A2B8);
+  background: -o-linear-gradient(bottom, rgb(76, 101, 150), #17A2B8);
+  background: -ms-linear-gradient(bottom, rgb(76, 101, 150), #17A2B8);
+  background: linear-gradient(to top, rgb(76, 101, 150), #17A2B8);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+}
+#cssmenu ul li.active > a {
+  padding: 12px 12px 12px 16px;
+  border-left: 1px dashed #de8886;
+  border-top: 1px dashed #de8886;
+  border-bottom: 1px dashed #de8886;
+  color: #ffffff;
+  text-shadow: 0 1px 1px #8c2726;
+}
+#cssmenu ul li.active:after {
+  position: absolute;
+  right: -16px;
+  top: 7px;
+  width: 31.526911934581186px;
+  height: 31.526911934581186px;
+  background: #ce4c4a;
+  background: -moz-linear-gradient(-45deg, rgb(76, 101, 150), #17A2B8);
+  background: -webkit-linear-gradient(-45deg, rgb(76, 101, 150), #17A2B8);
+  background: -o-linear-gradient(-45deg, rgb(76, 101, 150), #17A2B8);
+  background: -ms-linear-gradient(-45deg, rgb(76, 101, 150), #17A2B8);
+  background: linear-gradient(-45deg, rgb(76, 101, 150), #17A2B8);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  content: "";
+}
+#cssmenu ul li.active:before {
+  position: absolute;
+  right: -12px;
+  top: 9px;
+  z-index: 10;
+  width: 28.526911934581186px;
+  height: 28.526911934581186px;
+  border-right: 1px dashed #e9afae;
+  border-top: 1px dashed #e9afae;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  content: "";
+}
+#cssmenu ul li.active a:after {
+  position: absolute;
+  bottom: -7px;
+  left: -11px;
+  z-index: -1;
+  width: 0;
+  height: 0;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 8px solid transparent;
+  border-right: 8px solid #982b29;
+  content: "";
+}
+</style>
+
+{% load static %}
+{% block content %}
+
+    <!-- ======== START OF HEADER SECTION ========= -->
+    {% include "includes/menubar.html" %}
+    <!-- ======== END OF HEADER SECTION =========== -->
+
+    <!-- ======== START OF HEADER SECTION ========= -->
+    {% include "includes/aside.html" %}
+    <!-- ======== END OF HEADER SECTION =========== -->
+
+    <div class="content-wrapper">
+        <div class="col-md-12">&nbsp;</div>
+        <section class="content">
+            <div class="container-fluid">
+                <div class="col-md-12">
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">All Correlations</h3>
+                        </div>
+
+                        <div class="card-body">
+                            <div id='cssmenu'>
+                                {% for i in socialElementData %}
+                                <ul class="col-md-5">
+                                    <li class='active'><a href='#'>{{ i.title }}</a></li>
+
+                                    {% for j in elementalFactData %}
+                                        {% if j.social_element.id == i.id %}
+                                            <li><a href='#'>&nbsp; <span class="text-info">&#10004;</span> &nbsp;{{ j.correlation.title }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Control sidebar content goes here -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- /.control-sidebar -->
+    </aside>
+
+{% endblock content %}
+
+<!-- ===== START OF FOOTER SECTION ======== -->
+{% include "includes/footer.html" %}
+<!-- ===== END OF FOOTER SECTION ========== -->
+
+<script>
+    $(function () {
+        $("#example1").DataTable();
+        $('#example2').DataTable({
+            "paging"       : true,
+            "lengthChange" : false,
+            "searching"    : false,
+            "ordering"     : true,
+            "info"         : true,
+            "autoWidth"    : false,
+        });
+    });
+</script>
+
+
+<!-- EXTRS FOR MENU -->
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>

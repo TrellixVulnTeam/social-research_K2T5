@@ -1,0 +1,275 @@
+{% load static %}
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="{% url 'home' %}" class="brand-link">
+        <img src="{% static 'img/AdminLTELogo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">Social Research </span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="{{ MEDIA_URL }}profile_img/{{ menuData.profile_picture }}" class="img-circle elevation-2" alt="User Image">
+            </div>
+
+            <div class="info">
+                <a href="{% url 'view_profile' %}" target="_blank" class="d-block">{{ menuData.name | title }}</a>
+            </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                
+                <li class="nav-item has-treeview menu-open">
+                    <a href="{% url 'home' %}" class="nav-link active">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+
+                {% if menuData.designation == 'admin' %}
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-bookmark"></i>
+                        <p>
+                            Social Element
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{% url 'add_social_element' %}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add New</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{% url 'all_social_element' %}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>View All</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {% endif %}
+
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-book-open"></i>
+                        <p>
+                            Elemental Fact
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{% url 'add_elemental_fact' %}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add New</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{% url 'all_elemental_fact' %}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>View All</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                {% if menuData.designation == 'admin' %}<hr style="display: block; width: 100%; border-bottom: .5px solid #555; padding: 0px 5px;">{% endif %}
+                
+                {% if menuData.designation == 'admin' %}
+                <li class="nav-item has-treeview">
+                    <a href="{% url 'correlation' %}" class="nav-link">
+                        <i class="nav-icon fas fa-handshake"></i>
+                        <p>
+                            Correlations
+                        </p>
+                    </a>
+                </li>
+                {% endif %}
+
+                {% if menuData.designation == 'admin' %}
+                <li class="nav-item has-treeview">
+                    <a href="{% url 'analytics' %}" class="nav-link">
+                        <i class="nav-icon fas fa-brain"></i>
+                        <p>
+                            Analytics
+                        </p>
+                    </a>
+                </li>
+                {% endif %}
+
+                {% if menuData.designation == 'admin' %}<hr style="display: block; width: 100%; border-bottom: .5px solid #555; padding: 0px 5px;">{% endif %}
+
+                {% if menuData.designation == 'admin' %}
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Volunteer
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{% url 'add_volunteer' %}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add New</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{% url 'all_volunteer' %}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>View All</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {% endif %}
+
+                {% if menuData.designation == 'admin' %}
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-hands-helping"></i>
+                        <p>
+                            Social Work
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{% url 'add_social_work' %}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add New</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{% url 'all_social_work' %}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>View All</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {% endif %}
+
+                {% if menuData.designation == 'admin' %}<hr style="display: block; width: 100%; border-bottom: .5px solid #555; padding: 0px 5px;">{% endif %}
+
+                {% if menuData.designation == 'contributor' %}
+                <li class="nav-item has-treeview">
+                    <a href="{% url 'add_contributor' %}" class="nav-link">
+                        <i class="nav-icon fas fa-hand-holding-usd"></i>
+                        <p>
+                            Add Contribution
+                        </p>
+                    </a>
+                </li>
+                {% endif %}
+
+                {% if menuData.designation == 'admin' %}
+                <li class="nav-item has-treeview">
+                    <a href="{% url 'contributors_in_research' %}" class="nav-link">
+                        <i class="nav-icon fas fa-hand-holding-heart"></i>
+                        <p>
+                            Contributors in Research
+                        </p>
+                    </a>
+                </li>
+                {% endif %}
+
+                {% if menuData.designation == 'admin' %}
+                <li class="nav-item has-treeview">
+                    <a href="{% url 'all_contributor' %}" class="nav-link">
+                        <i class="nav-icon fas fa-hand-holding-usd"></i>
+                        <p>
+                            Contributions in Donation
+                        </p>
+                    </a>
+                </li>
+                {% endif %}
+
+                {% if menuData.designation == 'admin' %}
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-money-bill-wave"></i>
+                        <p>
+                            Expenditure
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{% url 'add_expenditure' %}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add New</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{% url 'all_expenditure' %}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>View All</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {% endif %}
+
+                {% if menuData.designation == 'admin' %}<hr style="display: block; width: 100%; border-bottom: .5px solid #555; padding: 0px 5px;">{% endif %}
+
+                {% if menuData.designation == 'admin' %}
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-blog"></i>
+                        <p>
+                            Blog
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{% url 'add_blog' %}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add New</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{% url 'all_blog' %}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>View All</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {% endif %}
+
+                {% if menuData.designation == 'admin' %}
+                <li class="nav-item has-treeview">
+                    <a href="{% url 'all_contact' %}" class="nav-link">
+                        <i class="nav-icon fas fa-comments"></i>
+                        <p>
+                            Contacts
+                        </p>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</aside>
